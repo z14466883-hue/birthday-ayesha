@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ayesha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f1 50%, #ffd6e8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 90%;
+            padding: 20px;
+        }
+
+        .text {
+            font-size: 2.5em;
+            color: #F26B8A;
+            font-weight: 400;
+            margin: 20px;
+            animation: fadeIn 1s ease-out forwards;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            margin: 15px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: white;
+            color: #F26B8A;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(242,107,138,0.3);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out forwards;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(242,107,138,0.5);
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) translateX(0);
+            }
+            50% { 
+                transform: translateY(-30px) translateX(10px);
+            }
+        }
+
+        .dark-mode {
+            background: #1a1a2e !important;
+            transition: background 0.5s ease;
+        }
+
+        .banner {
+            font-family: 'Satisfy', cursive;
+            font-size: 2.2em;
+            color: #F26B8A;
+            margin: 20px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(242,107,138,0.4);
+            animation: fadeIn 1s ease-out;
+            border: 3px solid #ffd6e8;
+            position: relative;
+            max-width: 750px;
+            margin: 20px auto;
+        }
+
+        .banner-decoration {
+            font-size: 0.7em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .confetti-banner {
+            position: absolute;
+            font-size: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .daffodil {
+            position: absolute;
+            font-size: 40px;
+            animation: daffodilFloat 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes daffodilFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0.8;
+            }
+            25% { 
+                transform: translateY(-15px) rotate(5deg); 
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(-5deg); 
+                opacity: 0.9;
+            }
+            75% { 
+                transform: translateY(-15px) rotate(3deg); 
+                opacity: 1;
+            }
+        }
+
+        .daffodil-fall {
+            position: absolute;
+            font-size: 35px;
+            animation: petalFall 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .cake {
+            font-size: 100px;
+            margin: 30px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.8;
+            box-shadow: 0 20px 60px rgba(255,105,180,0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .message-card h2 {
+            color: #ff69b4;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+
+        .corner-daffodil {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 150px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(242,107,138,0.4);
+            animation: fadeIn 1.5s ease-out;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="text">Loading... If you see this, JavaScript is working! 🎉</div>
+    </div>
+
+    <script>
+        console.log('Script started!');
+        
+        var app = document.getElementById('app');
+        var step = 1;
+        var hearts = [];
+
+        // Create background hearts
+        function createHearts() {
+            for (var i = 0; i < 10; i++) {
+                var heart = document.createElement('div');
+                heart.className = 'heart-float';
+                heart.textContent = '💗';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(heart);
+                hearts.push(heart);
+            }
+        }
+
+        function removeHearts() {
+            hearts.forEach(function(h) {
+                h.remove();
+            });
+            hearts = [];
+        }
+
+        window.showStep = function() {
+            console.log('Step:', step);
+            
+            if (step === 1) {
+                app.innerHTML = '<img src="pic1.jpg" style="max-width: 300px; border-radius: 20px; box-shadow: 0 10px 40px rgba(255,105,180,0.4); margin: 20px; animation: fadeIn 1s ease-out;"><div class="text">It\'s your special day! 💕</div>';
+                setTimeout(function() { 
+                    step++; 
+                    showStep(); 
+                }, 3000);
+            }
+            else if (step === 2) {
+                app.innerHTML = '<img src="pic2.jpg" style="max-width: 300px; border-radius: 20px; box-shadow: 0 10px 40px rgba(255,105,180,0.4); margin: 20px; animation: fadeIn 1s ease-out;"><div class="text">To make your day more special,<br>I have made something for you! 🎁</div>';
+                setTimeout(function() { 
+                    step++; 
+                    showStep(); 
+                }, 3000);
+            }
+            else if (step === 3) {
+                app.innerHTML = '<img src="pic3.jpg" style="max-width: 300px; border-radius: 20px; box-shadow: 0 10px 40px rgba(255,105,180,0.4); margin: 20px; animation: fadeIn 1s ease-out;"><div class="text">Do you wanna see what I made? 💝</div>' +
+                    '<button class="button" onclick="step = 4; showStep()">yess!! 😊</button>' +
+                    '<button class="button" onclick="step = 4; showStep()">HELLLAAAA YESSSSSSSSS!!!!!! 🎉</button>';
+            }
+            else if (step === 4) {
+                app.innerHTML = '<img src="gif1.gif" style="max-width: 300px; border-radius: 20px; box-shadow: 0 10px 40px rgba(255,105,180,0.4); margin: 20px; animation: fadeIn 1s ease-out;"><div class="text">Have a look at it, madam jii! 👑</div>' +
+                    '<button class="button" onclick="step = 5; showStep()">Continue ✨</button>';
+            }
+            else if (step === 5) {
+                document.body.classList.add('dark-mode');
+                hearts.forEach(function(h) {
+                    h.style.opacity = '0.2';
+                });
+                app.innerHTML = '<button class="button" onclick="step = 6; showStep()">Put the lights on 💡</button>';
+            }
+            else if (step === 6) {
+                document.body.classList.remove('dark-mode');
+                hearts.forEach(function(h) {
+                    h.style.opacity = '0.6';
+                });
+                app.innerHTML = '<button class="button" onclick="step = 7; showStep()">Play Music 🎵</button>';
+            }
+            else if (step === 7) {
+                var audio = new Audio('happy-birthday-334876.mp3');
+                audio.loop = true;
+                audio.play().catch(function(err) {
+                    console.log('Audio error:', err);
+                });
+                app.innerHTML = '<button class="button" onclick="step = 8; showStep()">Decorate 🎨</button>';
+            }
+            else if (step === 8) {
+                app.innerHTML = '<div class="banner">' +
+                    '<div class="banner-decoration">🎈 🎊 🎉 ✨ 💕 ✨ 🎉 🎊 🎈</div>' +
+                    '🌟 ═════════════════ 🌟<br>' +
+                    '🎉 <span style="font-size: 1.3em; font-weight: bold; text-shadow: 2px 2px 4px rgba(242,107,138,0.5);">HAPPY BIRTHDAY</span> 🎉<br>' +
+                    '💖 <span style="font-size: 1.4em; font-weight: bold; color: #f26B8A; text-shadow: 3px 3px 6px rgba(242,107,138,0.6);">AYESHA</span> 💖<br>' +
+                    '🌟 ═════════════════ 🌟<br>' +
+                    '<div class="banner-decoration">🎈 🎊 🎉 ✨ 💕 ✨ 🎉 🎊 🎈</div>' +
+                    '</div>' +
+                    '<button class="button" onclick="step = 9; showStep()">Lets cut the cake 🎂</button>';
+                
+                // Add floating confetti around the banner
+                var confettiEmojis = ['🎊', '🎉', '✨', '💕', '💖', '🌟', '🎈', '🎀'];
+                for (var i = 0; i < 15; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var confetti = document.createElement('div');
+                            confetti.className = 'confetti-banner';
+                            confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                            confetti.style.left = Math.random() * 100 + '%';
+                            confetti.style.top = Math.random() * 100 + '%';
+                            confetti.style.animationDelay = Math.random() * 2 + 's';
+                            document.body.appendChild(confetti);
+                            setTimeout(function() {
+                                confetti.remove();
+                            }, 5000);
+                        }, index * 100);
+                    })(i);
+                }
+                
+                // Add daffodil flowers floating around
+                for (var i = 0; i < 12; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var daffodil = document.createElement('div');
+                            daffodil.className = 'daffodil';
+                            daffodil.textContent = '🌼';
+                            daffodil.style.left = Math.random() * 100 + '%';
+                            daffodil.style.top = Math.random() * 100 + '%';
+                            daffodil.style.animationDelay = Math.random() * 2 + 's';
+                            document.body.appendChild(daffodil);
+                            setTimeout(function() {
+                                daffodil.remove();
+                            }, 6000);
+                        }, index * 150);
+                    })(i);
+                }
+            }
+            else if (step === 9) {
+                app.innerHTML = '<div class="banner">HAPPY BIRTHDAY AYESHA! 🎉</div>' +
+                    '<div class="cake">🎂</div>' +
+                    '<div class="text">Make a wish! ✨</div>' +
+                    '<button class="button" onclick="step = 10; showStep()">Well, I have a message for you my love 💌</button>';
+            }
+            else if (step === 10) {
+                removeHearts();
+                
+                // Create heart explosion
+                for (var i = 0; i < 30; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var heart = document.createElement('div');
+                            heart.style.position = 'absolute';
+                            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                            heart.textContent = ['💕', '💖', '💗', '💝'][Math.floor(Math.random() * 4)];
+                            heart.style.left = Math.random() * 100 + '%';
+                            heart.style.top = Math.random() * 100 + '%';
+                            heart.style.opacity = '0';
+                            heart.style.animation = 'fadeIn 2s ease-out forwards';
+                            heart.style.pointerEvents = 'none';
+                            document.body.appendChild(heart);
+                            setTimeout(function() {
+                                heart.remove();
+                            }, 3000);
+                        }, index * 50);
+                    })(i);
+                }
+                
+                // Add falling daffodils
+                for (var i = 0; i < 20; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var daffodil = document.createElement('div');
+                            daffodil.className = 'daffodil-fall';
+                            daffodil.textContent = '🌼';
+                            daffodil.style.left = Math.random() * 100 + '%';
+                            daffodil.style.animationDelay = Math.random() * 3 + 's';
+                            daffodil.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                            document.body.appendChild(daffodil);
+                            setTimeout(function() {
+                                daffodil.remove();
+                            }, 8000);
+                        }, index * 200);
+                    })(i);
+                }
+                
+                // Add floating daffodils around the message
+                for (var i = 0; i < 10; i++) {
+                    (function(index) {
+                        setTimeout(function() {
+                            var daffodil = document.createElement('div');
+                            daffodil.className = 'daffodil';
+                            daffodil.textContent = '🌼';
+                            daffodil.style.left = Math.random() * 100 + '%';
+                            daffodil.style.top = Math.random() * 100 + '%';
+                            daffodil.style.animationDelay = Math.random() * 2 + 's';
+                            document.body.appendChild(daffodil);
+                        }, index * 150);
+                    })(i);
+                }
+
+                app.innerHTML = '<div class="message-card">' +
+                    '<h2>My Dearest Ayesha 💕</h2>' +
+                    '<p>Helloooooooo JAAN!!!!!!!!! <br>' +
+                    'Happiest birthday babe 😘💋<br>' +
+                    'I always say how much i love you but sometimes its doesn\'t feel enough. it doesn\'t feel like my love is reaching you right. ' +
+                    'whenever i say ILOVEYOU it really means that i love you so much. For me "iloveyou" is not a word but it legit means that you are being loved by me unlike just a "love you" text...... <br>' +
+                    'I don\'t think so ki muje bss pyar h tumse because I love you beyond this, I\'ve have been falling for you daily. ' +
+                    'Also you know muje waise wala pyar ho gya h ab "Surkh wala, souz wala, faiz wala love ' +
+                    'Hota hai jo love se zyaada, vaise waalaa love". Dil nhi lagta kahi pe bhi... Kaise lagega dil tho apke pass h 😭🥺</p>' +
+                    '<p>I adore you and love you so much, sweetheart. ' +
+                    'I know how much you like to hear that, but I don\'t only write it because you like it. I write it because it makes me warm all over to write it to you. ' +
+                    'You are so cute and bright, like a flower glowing in the sunlight. ' +
+                    'You\'re a daffodil, and I\'m just a bee falling in love with your heart—soft as the petals of a flower <br>' +
+                    '(A little bee fell in love one day, ' +
+                    'with a daffodil bright and still— ' +
+                    'he circles her petals soft as gold, ' +
+                    'and whispers, "you\'re my sweetest thrill." )🌼🐝✨<br>' +
+                    'Does this sounds cringe???? Yes a little 🤏🏻😂😂😂😭😭😭 but can\'t help with that.... This is how I feel for you🩷</p>' +
+                    '<p>And on this special day, I wanted to create something as beautiful and unique as you are. Every animation, every color, every heart floating on this page represents the joy you bring into my life. ' +
+                    'You\'ve lighten up my life just by being into it, and your smile has the power to make the darkest days bright. ' +
+                    'Happy Birthday to the love of my life.💗<br>' +
+                    '(Also I have daffodils for you at the right side bottom corner <br>' +
+                    'I hope you like it😋)</p>' +
+                    '<div class="signature">With all my love,<br>Always Yours 💝</div>' +
+                    '</div>' +
+                    '<img src="daffodil.jpg" class="corner-daffodil">';
+            }
+            else if (step === 99) {
+                app.innerHTML = '<div class="text">No problem! Come back whenever you\'re ready! 💕</div>' +
+                    '<button class="button" onclick="step = 1; showStep()">Actually, show me now! 😊</button>';
+            }
+        };
+
+        // Initialize
+        console.log('Creating hearts...');
+        createHearts();
+        console.log('Starting show...');
+        showStep();
+        console.log('Initialization complete!');
+    </script>
+</body>
+</html>
